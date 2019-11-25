@@ -15,3 +15,22 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
+import librosa
+
+
+def load_audio(audio_path, sampling_rate=7000, offset=None, duration=None):
+    """
+    :param audio_path:
+    :param sampling_rate:
+    :param offset:
+    :param duration:
+    :return:
+    """
+    if offset is not None and duration is not None:
+        audio_data, sr = librosa.load(path=audio_path,
+                                      sr=sampling_rate, offset=offset, duration=duration)
+        return audio_data
+    else:
+        audio_data, sr = librosa.load(path=audio_path,
+                                      sr=sampling_rate)
+        return audio_data
