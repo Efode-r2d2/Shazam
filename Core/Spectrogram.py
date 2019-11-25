@@ -55,6 +55,6 @@ class Spectrogram(object):
         :param audio_data:
         :return:
         """
-        stft_spectrogram_magnitude = self.spectrogram_magnitude(audio_data)
-        stft_spectrogram_magnitude_in_db = librosa.amplitude_to_db(stft_spectrogram_magnitude, ref=np.max)
-        return stft_spectrogram_magnitude_in_db
+        stft_magnitude = self.compute_stft_magnitude(audio_data)
+        stft_magnitude_in_db = librosa.amplitude_to_db(stft_magnitude, ref=np.max)
+        return stft_magnitude_in_db
