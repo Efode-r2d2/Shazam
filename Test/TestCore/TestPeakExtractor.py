@@ -23,5 +23,22 @@ from Core import PeakExtractor
 
 # source directory
 src_dir = "../../../Test_Data/Reference_Audios"
+# spectrogram  and peak extractor objects
+stft = Spectrogram(hop_length=32)
+peak_extractor = PeakExtractor()
 # searching for all .mp3 files under given source directory
 mp3_files = DirManager.find_mp3_files(src_dir=src_dir)
+# reading audio data re-sampled at 7KHz for an audio portion
+# specified by offset and duration parameters
+audio_data = AudioManager.load_audio(audio_path=mp3_files[0], offset=10.0, duration=3.0)
+# computing spectrogram
+spectrogram = stft.compute_stft_magnitude_in_db(audio_data=audio_data)
+# extracting spectral peaks
+spectral_peaks = peak_extractor.extract_spectral_peaks_2(spectrogram)
+# print spectral peaks
+print(spectral_peaks[0])
+# display spectrogram and spectral peaks
+GraphManager.display_spectrogram_peaks(spectrogram=spectrogram,
+                                       spectral_peaks_x=spectral_peaks[1],
+                                       spectral_peaks_y=spectral_peaks[2],
+                                       plot_title="Spectrogram and Spectral Peaks")

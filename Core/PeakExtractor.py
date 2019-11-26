@@ -47,20 +47,20 @@ class PeakExtractor(object):
         self.minimum_filter_height = minimum_filter_height
         self.minimum_filter_width = minimum_filter_width
 
-    def extract_spectral_peaks_1(self, spectrogram_magnitude_in_db, fixed=False):
-        if fixed:
-            local_maxima = peak_local_max(image=spectrogram_magnitude_in_db,
-                                          min_distance=self.filter_dim,
-                                          indices=False,
-                                          threshold_abs=self.minimum_amp_in_db, num_peaks=self.num_peaks)
-        else:
-            local_maxima = peak_local_max(image=spectrogram_magnitude_in_db,
+    def extract_spectral_peaks_1(self, spectrogram):
+        """
+
+        :param spectrogram:
+        :return:
+        """
+        local_max_values = peak_local_max(image=spectrogram,
                                           min_distance=self.filter_dim,
                                           indices=False,
                                           threshold_abs=self.minimum_amp_in_db)
-        self.frequency_indices, self.time_indices = np.where(local_maxima)
+        self.frequency_indices, self.time_indices = np.where(local_max_values)
         self.spectral_peaks = list(zip(self.frequency_indices, self.time_indices))
         self.spectral_peaks.sort(key=itemgetter(1))
+        return self.spectral_peaks, self.time_indices, self.frequency_indices
 
     def extract_spectral_peaks_2(self, spectrogram):
         """
@@ -87,15 +87,3 @@ class PeakExtractor(object):
         freq_indices = [i[1] for i in spectral_peaks]
         spectral_peaks.sort(key=itemgetter(0))
         return spectral_peaks, time_indices, freq_indices
-
-    def get_spectral_peaks(self):
-        return self.spectral_peaks
-
-    def get_time_indices(self):
-        return self.time_indices
-
-    def get_frequency_indices(self):
-        return self.frequency_indices
-
-    def get_time_frequency_indices(self):
-        return self.time_indices, self.frequency_indices
