@@ -41,10 +41,10 @@ class FingerprintGenerator(object):
         for i in range(len(spectral_peaks)):
             for j in range(1, self.fan_out):
                 if (i + j) < len(spectral_peaks):
-                    f1 = spectral_peaks[i][0]
-                    f2 = spectral_peaks[i + j][0]
-                    t1 = spectral_peaks[i][1]
-                    t2 = spectral_peaks[i + j][1]
+                    f1 = spectral_peaks[i][1]
+                    f2 = spectral_peaks[i + j][1]
+                    t1 = spectral_peaks[i][0]
+                    t2 = spectral_peaks[i + j][0]
                     t_delta = t2 - t1
                     if self.min_t_delta <= t_delta <= self.max_t_delta:
                         peak_info = {str(f1), str(f2), str(t_delta)}

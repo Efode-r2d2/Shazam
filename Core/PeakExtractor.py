@@ -58,8 +58,8 @@ class PeakExtractor(object):
                                           indices=False,
                                           threshold_abs=self.minimum_amp_in_db)
         self.frequency_indices, self.time_indices = np.where(local_max_values)
-        self.spectral_peaks = list(zip(self.frequency_indices, self.time_indices))
-        self.spectral_peaks.sort(key=itemgetter(1))
+        self.spectral_peaks = list(zip(self.time_indices, self.frequency_indices))
+        self.spectral_peaks.sort(key=itemgetter(0))
         return self.spectral_peaks, self.time_indices, self.frequency_indices
 
     def extract_spectral_peaks_2(self, spectrogram):
