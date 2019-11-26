@@ -40,6 +40,6 @@ for i in mp3_files[0:5]:
     spectrogram = stft.compute_stft_magnitude_in_db(audio_data=audio_data)
     spectral_peaks = peak_extractor.extract_spectral_peaks_2(spectrogram=spectrogram)
     fingerprint_generator.generate_fingerprints(spectral_peaks=spectral_peaks[0],
-                                                audio_hashes=audio_fingerprints,
-                                                audio_hashes_info=audio_fingerprints_info)
-    
+                                                audio_fingerprints=audio_fingerprints,
+                                                audio_fingerprints_info=audio_fingerprints_info)
+

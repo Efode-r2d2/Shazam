@@ -41,8 +41,8 @@ spectral_peaks = peak_extractor.extract_spectral_peaks_1(spectrogram=spectrogram
 audio_fingerprints = list()
 audio_fingerprints_info = list()
 fingerprint_generator.generate_fingerprints(spectral_peaks=spectral_peaks[0],
-                                            audio_hashes=audio_fingerprints,
-                                            audio_hashes_info=audio_fingerprints_info)
+                                            audio_fingerprints=audio_fingerprints,
+                                            audio_fingerprints_info=audio_fingerprints_info)
 # audio fingerprints
 print("Audio Fingerprints", len(audio_fingerprints))
 print(audio_fingerprints)

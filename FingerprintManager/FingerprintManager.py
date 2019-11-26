@@ -28,6 +28,7 @@ def create_fingerprint_file(fingerprint_file_path, threshold=0.75, num_perm=128)
     """
     lsh = MinHashLSH(threshold=threshold, num_perm=num_perm)
     pickle.dump(lsh, open(fingerprint_file_path, "wb"))
+    print(fingerprint_file_path, " Created!")
 
 
 def insert_fingerprint(fingerprint_file, audio_id, audio_fingerprint):

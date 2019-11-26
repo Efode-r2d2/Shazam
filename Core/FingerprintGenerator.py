@@ -31,12 +31,12 @@ class FingerprintGenerator(object):
         self.max_t_delta = max_t_delta
         self.fan_out = fan_out
 
-    def generate_fingerprints(self, spectral_peaks, audio_hashes, audio_hashes_info):
+    def generate_fingerprints(self, spectral_peaks, audio_fingerprints, audio_fingerprints_info):
         """
 
         :param spectral_peaks:
-        :param audio_hashes:
-        :param audio_hashes_info:
+        :param audio_fingerprints:
+        :param audio_fingerprints_info:
         """
         for i in range(len(spectral_peaks)):
             for j in range(1, self.fan_out):
@@ -51,5 +51,5 @@ class FingerprintGenerator(object):
                         peak_digest = MinHash(num_perm=10)
                         for d in peak_info:
                             peak_digest.update(d.encode('utf8'))
-                        audio_hashes.append(peak_digest)
-                        audio_hashes_info.append(t1)
+                        audio_fingerprints.append(peak_digest)
+                        audio_fingerprints_info.append(t1)
