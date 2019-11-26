@@ -17,6 +17,7 @@
 """
 from Utilities import AudioManager
 from Utilities import DirManager
+from Utilities import GraphManager
 
 # source directory for audio files
 src_dir = "../../../Test_Data/Reference_Audios"
@@ -28,3 +29,5 @@ audio_data = AudioManager.load_audio(audio_path=mp3_files[0], offset=10.0, durat
 print("7000 samples each second  and for 10 second duration, 7000*10 = ", len(audio_data))
 # time series data
 print(audio_data)
+# display Audio Waveform
+GraphManager.display_audio_waveform(audio_data=audio_data,sampling_rate=7000,plot_title="Audio Waveform")
