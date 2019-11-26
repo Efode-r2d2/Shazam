@@ -78,22 +78,39 @@ def display_scatter_plot_2(data, plot_title=""):
     plt.show()
 
 
-def display_spectrogram_peaks(spectrogram_in_db, spectral_peaks_x, spectral_peaks_y, title=""):
+def display_spectrogram_peaks(spectrogram, spectral_peaks_x, spectral_peaks_y, plot_title=""):
+    """
+
+    :param plot_title:
+    :param spectrogram:
+    :param spectral_peaks_x:
+    :param spectral_peaks_y:
+    """
     figure, ax = plt.subplots()
-    ax.imshow(spectrogram_in_db)
+    ax.imshow(spectrogram)
     ax.scatter(spectral_peaks_x, spectral_peaks_y, color='r')
-    plt.title(title)
+    plt.title(plot_title)
     plt.xlabel("Frame Number")
     plt.ylabel("Frequency Bins")
     plt.show()
 
 
-def display_spectrogram_peaks_2(spectrogram_in_db, spectral_peaks_x, spectral_peaks_y, spectral_peaks_x_2,
-                                spectral_peaks_y_2):
+def display_spectrogram_peaks_2(spectrogram, spectral_peaks_x, spectral_peaks_y,
+                                spectral_peaks_x_2, spectral_peaks_y_2, plot_title=""):
+    """
+
+    :param spectrogram:
+    :param spectral_peaks_x:
+    :param spectral_peaks_y:
+    :param spectral_peaks_x_2:
+    :param spectral_peaks_y_2:
+    :param plot_title:
+    """
     figure, ax = plt.subplots()
-    ax.imshow(spectrogram_in_db)
+    ax.imshow(spectrogram)
     ax.scatter(spectral_peaks_x, spectral_peaks_y, color='r')
     ax.scatter(spectral_peaks_x_2, spectral_peaks_y_2, color='b')
+    plt.title(plot_title)
     plt.xlabel("Frame Number")
     plt.ylabel("Frequency Bins")
     plt.show()
