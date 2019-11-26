@@ -17,14 +17,4 @@
 """
 from Utilities import AudioManager
 from Utilities import DirManager
-
-# source directory for audio files
-src_dir = "../../../Test_Data/Reference_Audios"
-# searching for mp3 files under the given source directory
-mp3_files = DirManager.find_mp3_files(src_dir=src_dir)
-# reading time series data of the first audio re-sampled at 7KHz
-audio_data = AudioManager.load_audio(audio_path=mp3_files[0], offset=10.0, duration=10.0)
-# length of time series data
-print("7000 samples each second  and for 10 second duration, 7000*10 = ", len(audio_data))
-# time series data
-print(audio_data)
+from Utilities import GraphManager
