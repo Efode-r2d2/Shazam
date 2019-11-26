@@ -17,6 +17,7 @@
 """
 from Utilities import AudioManager
 from Utilities import DirManager
+from Utilities import GraphManager
 from Core import Spectrogram
 
 # source directory
@@ -26,7 +27,15 @@ mp3_files = DirManager.find_mp3_files(src_dir=src_dir)
 # reading time series audio data re-sampled at 7KHz
 # for a given audio portion specified by offset
 # and duration parameters
-audio_data = AudioManager.load_audio(audio_path=mp3_files[0], offset=10.0,duration=10.0)
+audio_data = AudioManager.load_audio(audio_path=mp3_files[0], offset=20.0, duration=5.0)
 # time series audio data
 print(audio_data)
-
+# computing spectrogram
+stft = Spectrogram(hop_length=32)
+spectrogram = stft.compute_stft_magnitude_in_db(audio_data=audio_data)
+# spectrogram shape
+print(spectrogram.shape)
+# spectrogram
+print(spectrogram)
+# display spectrogram
+GraphManager.display_spectrogram(spectrogram=spectrogram, plot_title="Spectrogram")
