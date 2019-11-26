@@ -19,7 +19,7 @@ from collections import defaultdict
 from FingerprintManager import FingerprintManager
 
 
-def match_fingerprints(self, fingerprint_file, audio_fingerprints, audio_fingerprints_info):
+def match_fingerprints(fingerprint_file, audio_fingerprints, audio_fingerprints_info):
     """
 
     :param self:
