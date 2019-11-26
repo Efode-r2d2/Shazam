@@ -18,3 +18,15 @@
 from Utilities import AudioManager
 from Utilities import DirManager
 from Core import Spectrogram
+
+# source directory
+src_dir = "../../../Test_Data/Reference_Audios"
+# searching for all .mp3 files
+mp3_files = DirManager.find_mp3_files(src_dir=src_dir)
+# reading time series audio data re-sampled at 7KHz
+# for a given audio portion specified by offset
+# and duration parameters
+audio_data = AudioManager.load_audio(audio_path=mp3_files[0], offset=10.0,duration=10.0)
+# time series audio data
+print(audio_data)
+
