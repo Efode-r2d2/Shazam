@@ -31,7 +31,7 @@ def match_fingerprints(fingerprint_file, audio_fingerprints, audio_fingerprints_
     matches_in_bins = defaultdict(list)
     query_seq = 0
     for query in audio_fingerprints:
-        matches = FingerprintManager.query_fingerprint(lsh=fingerprint_file, audio_fingerprint=query)
+        matches = FingerprintManager.query_fingerprint(fingerprint_file=fingerprint_file, audio_fingerprint=query)
         for i in matches:
             fingerprint_info = i.split("_")
             # keep in mind the difference between hash_info and hashes_info
