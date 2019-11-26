@@ -64,3 +64,12 @@ def insert_fingerprints(fingerprint_file, audio_id, audio_fingerprints, audio_fi
         fingerprint_id = audio_id + "_" + str(fingerprint_seq) + "_" + str(audio_fingerprints_info[fingerprint_seq])
         insert_fingerprint(fingerprint_file, fingerprint_id, i)
         fingerprint_seq += 1
+
+
+def dump_fingerprints_file(fingerprints_file, fingerprint_file_path):
+    pickle.dump(fingerprints_file, open(fingerprint_file_path, "wb"))
+
+
+def load_fingerprints_file(fingerprints_file_path):
+    fingerprints_file = pickle.load(open(fingerprints_file_path, "rb"))
+    return fingerprints_file

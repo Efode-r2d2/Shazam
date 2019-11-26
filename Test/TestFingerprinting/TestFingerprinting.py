@@ -25,12 +25,15 @@ from FingerprintManager import FingerprintManager
 
 # source directory
 src_dir = "../../../Test_Data/Reference_Audios"
+# path for fingerprints file
+fingerprints_file_path = "../../../Hashes/Shazam/fingerprints_file"
 # searching for all .mp3 files under a specified source dir
 mp3_files = DirManager.find_mp3_files(src_dir=src_dir)
 # spectrogram, peak extractor and fingerprint generator objects
 stft = Spectrogram(hop_length=32)
 peak_extractor = PeakExtractor()
 fingerprint_generator = FingerprintGenerator()
+fingerprint_file = FingerprintManager.load_fingerprints_file(fingerprints_file_path=fingerprints_file_path)
 # fingerprinting five audios
 for i in mp3_files[0:5]:
     audio_fingerprints = list()
@@ -42,4 +45,10 @@ for i in mp3_files[0:5]:
     fingerprint_generator.generate_fingerprints(spectral_peaks=spectral_peaks[0],
                                                 audio_fingerprints=audio_fingerprints,
                                                 audio_fingerprints_info=audio_fingerprints_info)
-
+    FingerprintManager.insert_fingerprints(fingerprint_file=fingerprint_file,
+                                           audio_id=audio_id,
+                                           audio_fingerprints=audio_fingerprints,
+                                           audio_fingerprints_info=audio_fingerprints_info)
+    print(audio_id, " Fingerprinted!")
+FingerprintManager.dump_fingerprints_file(fingerprints_file=fingerprint_file,
+                                          fingerprint_file_path=fingerprints_file_path)

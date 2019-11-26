@@ -17,5 +17,5 @@
 """
 from FingerprintManager import FingerprintManager
 
-fingerprint_file_path = "../../../Hashes/Shazam/fingerprint_file"
+fingerprint_file_path = "../../../Hashes/Shazam/fingerprints_file"
 FingerprintManager.create_fingerprint_file(fingerprint_file_path=fingerprint_file_path)

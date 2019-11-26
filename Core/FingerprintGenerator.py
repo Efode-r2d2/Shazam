@@ -48,7 +48,7 @@ class FingerprintGenerator(object):
                     t_delta = t2 - t1
                     if self.min_t_delta <= t_delta <= self.max_t_delta:
                         peak_info = {str(f1), str(f2), str(t_delta)}
-                        peak_digest = MinHash(num_perm=10)
+                        peak_digest = MinHash(num_perm=128)
                         for d in peak_info:
                             peak_digest.update(d.encode('utf8'))
                         audio_fingerprints.append(peak_digest)
