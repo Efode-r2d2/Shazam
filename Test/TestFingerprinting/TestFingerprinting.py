@@ -35,3 +35,11 @@ fingerprint_generator = FingerprintGenerator()
 for i in mp3_files[0:5]:
     audio_fingerprints = list()
     audio_fingerprints_info = list()
+    audio_id = i.split("/")[5].split(".")[0]
+    audio_data = AudioManager.load_audio(audio_path=i)
+    spectrogram = stft.compute_stft_magnitude_in_db(audio_data=audio_data)
+    spectral_peaks = peak_extractor.extract_spectral_peaks_2(spectrogram=spectrogram)
+    fingerprint_generator.generate_fingerprints(spectral_peaks=spectral_peaks[0],
+                                                audio_hashes=audio_fingerprints,
+                                                audio_hashes_info=audio_fingerprints_info)
+    
