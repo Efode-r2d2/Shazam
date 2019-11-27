@@ -37,7 +37,7 @@ fingerprint_generator = FingerprintGenerator()
 # reading all .wav files under given source dir
 wav_files = DirManager.find_wav_files(src_dir=src_dir)
 # reading audio data re-sampled at 7KHz of a given audio portion specified by offset and duration parameters
-audio_data = AudioManager.load_audio(audio_path=wav_files[1])
+audio_data = AudioManager.load_audio(audio_path=wav_files[3])
 # computing spectrogram
 spectrogram = stft.compute_stft_magnitude_in_db(audio_data=audio_data)
 # extract spectral peaks
