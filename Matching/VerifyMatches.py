@@ -25,11 +25,11 @@ def verify_wang_matches(matches_in_bins):
         if len(matches_in_bins[i]) >= 10:
             candidate_audios.append(i)
     for y in candidate_audios:
-        n, b = np.histogram(matches_in_bins[y], bins=len(matches_in_bins[y]))
+        n, b = np.histogram(matches_in_bins[y], bins=100)
         final_audios.append((y, n.max(), list(n).index(n.max())))
     if len(final_audios) > 0:
         final_audios = sorted(final_audios, key=lambda x: int(x[1]), reverse=True)
-        if final_audios[0][1] >= 5:
+        if final_audios[0][1] >= 10:
             return final_audios[0][0], final_audios[0][1]
         return "No Match", final_audios[0][1]
     else:

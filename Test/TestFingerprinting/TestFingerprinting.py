@@ -35,7 +35,7 @@ peak_extractor = PeakExtractor()
 fingerprint_generator = FingerprintGenerator()
 fingerprint_file = FingerprintManager.load_fingerprints_file(fingerprints_file_path=fingerprints_file_path)
 # fingerprinting five audios
-for i in mp3_files[0:5]:
+for i in mp3_files:
     audio_fingerprints = list()
     audio_fingerprints_info = list()
     audio_id = i.split("/")[5].split(".")[0]
